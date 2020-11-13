@@ -1,2 +1,2 @@
-# Project1Client
+# PostIt's client
 Client Repo
