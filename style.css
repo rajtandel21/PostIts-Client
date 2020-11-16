@@ -1,0 +1,19 @@
+#gifContainer{
+    display: none;
+    position: relative;
+    height: 200px;
+    width: 400px;
+    background-color: rgb(228, 228, 228);
+    border-radius: 5px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.gif{
+    height: auto;
+    width: 40vw;
+    max-width: 191px;
+    cursor: pointer;
+}
