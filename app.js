@@ -9,23 +9,23 @@ function enterData(data){
         viewArea.appendChild(stickyNote);
 
         const noteUser = document.createElement('h3');
-        noteUser.textContent = post.name;
+        noteUser.textContent = data[post].name;
         stickyNote.appendChild(noteUser);
 
         const notePost = document.createElement('p');
-        notePost.textContent = post.post;
+        notePost.textContent = data[post].post;
         stickyNote.appendChild(notePost);
 
         const noteEmoji = document.createElement('img');
-        noteEmoji.textContent = post.emoji;
+        noteEmoji.textContent = data[post].emoji;
         stickyNote.appendChild(noteEmoji);
 
         const noteGif = document.createElement('img');
-        noteGif.textContent = post.gif;
+        noteGif.textContent = data[post].gif;
         stickyNote.appendChild(noteGif);
 
         const noteComment = document.createElement('div');
-        noteComment.textContent = post.comment;
+        noteComment.textContent = data[post].comment;
         stickyNote.appendChild(noteComment);
 
     }
