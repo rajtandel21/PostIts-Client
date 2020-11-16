@@ -51,6 +51,7 @@ async function openGifMenu(){
 
 gifBtn.addEventListener('click', openGifMenu)
 
+const commentFormArray = [];
 
 function enterData(data){
     for(post in data){
@@ -94,10 +95,41 @@ function enterData(data){
             commentBody.textContent = "No comments";
             noteComment.appendChild(commentBody);
         }
+        //input for new comment with buttons for emojis
+        const commentForm = document.createElement('form');
+        commentForm.setAttribute('class', "commentForm");
+        noteComment.appendChild(commentForm);
+
+        const commentInput = document.createElement('input');
+        commentInput.setAttribute('type', "text");
+        commentInput.setAttribute('name', "commentName")
+        commentInput.setAttribute('placeHolder', "Enter a comment");
+        commentForm.appendChild(commentInput);
+
+        const commentEmoji = document.createElement('input');
+        commentEmoji.setAttribute('type', "button");
+        commentEmoji.setAttribute('value', "Emoji");
+        commentForm.appendChild(commentEmoji); 
+
+        const commentBtn = document.createElement('input');
+        commentBtn.setAttribute('type', "button");
+        commentBtn.setAttribute('name', "button");
+        commentBtn.setAttribute('value', "Post Comment");
+        commentBtn.addEventListener("click", ()=> postComment(commentInput.value));
+        commentForm.appendChild(commentBtn); 
+
         stickyNote.appendChild(noteComment);
 
     }
 }
+
+
+//console.log(commentFormArray);
+async function postComment(e){
+    console.log(e);
+}
+
+
 
 function getPosts(){
     fetch('http://localhost:3000/posts')
