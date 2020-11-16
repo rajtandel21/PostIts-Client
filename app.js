@@ -2,6 +2,55 @@ const submitForm = document.getElementById('myForm');
 const gifBtn = document.getElementById('gifBtn');
 const emojiBtn = document.getElementById('emojiBtn');
 const viewArea = document.getElementById('viewArea');
+const gifContainer = document.getElementById('gifContainer');
+const writeArea = document.getElementById('writeArea');
+
+
+//remove api key when deploy
+const apiKey = "lorR02f1t3GsnOIRMqaypO29cx2GBUVA";
+
+let gifContainerOpen = false;
+let wantedGif = "";
+
+const img = document.createElement('img');
+function selectedGif(url){
+    img.setAttribute('src', `${url}`);
+    if(writeArea.childNodes.length === 4){
+        writeArea.appendChild(img);
+    }
+    wantedGif = url;
+}
+
+async function openGifMenu(){
+    if(gifContainerOpen){
+        gifContainer.style.display = "none";
+        gifContainerOpen = false
+    }else{
+        gifContainer.style.display = "flex";
+        gifContainerOpen = true;
+        
+        const url = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${apiKey}&limit=16`);
+        const res = await url.json();
+        const gifData =  res.data;
+        
+        gifData.forEach(gif => {
+            const img = document.createElement('img');
+            img.setAttribute('class', 'gif');
+            img.setAttribute('src', `${gif.images.fixed_height_small.url}`);
+            img.addEventListener('click', ()=>{
+                selectedGif(gif.images.fixed_height.url);
+            })
+            if(gifContainer.childNodes.length <= 15){
+                gifContainer.appendChild(img);
+            }
+    
+        })
+    }
+}
+
+
+gifBtn.addEventListener('click', openGifMenu)
+
 
 function enterData(data){
     for(post in data){
@@ -17,15 +66,34 @@ function enterData(data){
         stickyNote.appendChild(notePost);
 
         const noteEmoji = document.createElement('img');
-        noteEmoji.textContent = data[post].emoji;
+        noteEmoji.setAttribute('src', data[post].emoji);
         stickyNote.appendChild(noteEmoji);
 
         const noteGif = document.createElement('img');
-        noteGif.textContent = data[post].gif;
+        noteGif.setAttribute('src', data[post].gif);
         stickyNote.appendChild(noteGif);
 
         const noteComment = document.createElement('div');
-        noteComment.textContent = data[post].comment;
+        const commentHead = document.createElement('h4');
+        commentHead.textContent = "Comments";
+        noteComment.appendChild(commentHead);
+
+        const commentArray = data[post].comments;
+        const commentName = document.createElement('p');
+        const commentBody = document.createElement('p');
+        
+        if(commentArray.length > 0){
+            commentArray.forEach(comment =>{
+                commentName.textContent = comment.name;
+                commentBody.textContent = comment.comment;
+    
+                noteComment.appendChild(commentName);
+                noteComment.appendChild(commentBody);
+            });
+        } else {
+            commentBody.textContent = "No comments";
+            noteComment.appendChild(commentBody);
+        }
         stickyNote.appendChild(noteComment);
 
     }
@@ -41,7 +109,7 @@ async function postData(e){
     e.preventDefault();
     const name = e.target.name.value;
     const post = e.target.post.value;
-    const gif = "";
+    const gif = wantedGif;
     const emoji = "";
 
     console.log(name, post);
