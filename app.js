@@ -4,22 +4,57 @@ const emojiBtn = document.getElementById('emojiBtn');
 const viewArea = document.getElementById('viewArea');
 const gifContainer = document.getElementById('gifContainer');
 const writeArea = document.getElementById('writeArea');
+const emojiContainer = document.getElementById('emojiContainer');
+const emoji = document.querySelectorAll('.emoji');
 
 
 //remove api key when deploy
 const apiKey = "lorR02f1t3GsnOIRMqaypO29cx2GBUVA";
 
 let gifContainerOpen = false;
+let emojiContainerOpen = false;
 let wantedGif = "";
+let wanterEmoji = [];
 
 const img = document.createElement('img');
+
 function selectedGif(url){
+    const checkGif = document.querySelector('.selectedGif') === null;
+    img.setAttribute('class', "selectedGif");
     img.setAttribute('src', `${url}`);
-    if(writeArea.childNodes.length === 4){
+
+    if(checkGif){
         writeArea.appendChild(img);
     }
     wantedGif = url;
     gifContainer.style.display = "none";
+    gifContainerOpen = false;
+}
+
+function selectedEmoji(url){
+    const emojiImg = document.createElement('img');
+    emojiImg.setAttribute('class', "selectedEmoji");
+    emojiImg.setAttribute("src", `${url}`);
+    writeArea.appendChild(emojiImg);
+    wanterEmoji.push(url);
+    console.log(wanterEmoji);
+
+    emojiContainer.style.display = "none";
+    emojiContainerOpen = false;
+}
+
+emoji.forEach(em => {
+    em.addEventListener('click', ()=> selectedEmoji(em.src));
+})
+function openEmojiMenu(){
+    if(emojiContainerOpen){
+        emojiContainer.style.display = "none";
+        emojiContainerOpen = false;
+    } else {
+        emojiContainer.style.display = "flex";
+        emojiContainerOpen = true;
+       
+    }
 }
 
 async function openGifMenu(){
@@ -49,7 +84,7 @@ async function openGifMenu(){
     }
 }
 
-
+emojiBtn.addEventListener('click', openEmojiMenu);
 gifBtn.addEventListener('click', openGifMenu)
 
 const commentFormArray = [];
@@ -67,9 +102,13 @@ function enterData(data){
         notePost.textContent = data[post].post;
         stickyNote.appendChild(notePost);
 
-        const noteEmoji = document.createElement('img');
-        noteEmoji.setAttribute('src', data[post].emoji);
-        stickyNote.appendChild(noteEmoji);
+        const emojiArray = data[post].emoji;
+        emojiArray.forEach(emoji => {
+            const noteEmoji = document.createElement('img');
+            noteEmoji.setAttribute("class", "selectedEmoji");
+            noteEmoji.setAttribute('src', emoji);
+            stickyNote.appendChild(noteEmoji);
+        })
 
         const noteGif = document.createElement('img');
         noteGif.setAttribute('src', data[post].gif);
@@ -166,7 +205,7 @@ async function postData(e){
     const name = e.target.name.value;
     const post = e.target.post.value;
     const gif = wantedGif;
-    const emoji = "";
+    const emoji = wanterEmoji;
 
     console.log(name, post);
 
