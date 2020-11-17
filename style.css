@@ -1,6 +1,25 @@
+header{
+    background: rgb(159,94,44);
+    background: linear-gradient(90deg, rgba(159,94,44,0.9867297260701156) 0%, rgba(121,89,9,1) 48%, rgba(255,192,0,1) 100%);
+}
+
 main{
     display: flex;
     
+}
+
+#emojiContainer{
+    display: none;
+    position: relative;
+    height: 200px;
+    width: 400px;
+    background-color: rgb(228, 228, 228);
+    border-radius: 5px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    border-radius: 5px;
+    border: 1px solid black;
+
 }
 
 #gifContainer{
@@ -16,9 +35,23 @@ main{
     border: 1px solid black;
 }
 
+.emoji {
+    height: auto;
+    width: 10vw;
+    cursor: pointer;
+}
+
 .gif{
     height: auto;
     width: 40vw;
     max-width: 191px;
     cursor: pointer;
+}
+
+textarea {
+    height: 200px;
+}
+
+div.form-group {
+    background-color: rgb(214, 214, 214);
 }
