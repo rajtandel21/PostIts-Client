@@ -11,14 +11,11 @@ main{
 #emojiContainer{
     display: none;
     position: relative;
-    height: 200px;
-    width: 400px;
+    height: 50px;
+    width: 160px;
     background-color: rgb(228, 228, 228);
     border-radius: 5px;
     flex-wrap: wrap;
-    overflow-y: scroll;
-    border-radius: 5px;
-    border: 1px solid black;
 
 }
 
@@ -31,14 +28,27 @@ main{
     border-radius: 5px;
     flex-wrap: wrap;
     overflow-y: scroll;
-    border-radius: 5px;
-    border: 1px solid black;
+}
+
+#viewArea{
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+    width: 70vw;
+}
+
+.stickyNote{
+    background-color: burlywood;
+    width: 15vw;
+    margin: 10px;
+    padding: 20px 30px;
 }
 
 .emoji {
-    height: auto;
-    width: 10vw;
+    width: 2vw;
+    height: 4vh;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .gif{
