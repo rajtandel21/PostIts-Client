@@ -13,36 +13,38 @@
         <h1>PostIt's</h1>
     </header>
     <hr>
-    <main class="container ml-0 mt-5">
-        <section id="postArea" class="col-6">
-            <form id="myForm">
-                <div class="form-group shadow-lg p-3 mb-5 rounded">
-                    <label for="name">Name:</label>
-                    <div class="input-group flex-nowrap">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="addon-wrapping">@</span>
+    <main class="container ml-0 mr-0 mt-5">
+        <section id="postArea">
+                <form id="myForm">
+                    <div class="form-group shadow-lg p-3 mb-5 rounded">
+                        <label for="name">Name:</label>
+                        <div class="input-group flex-nowrap">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="addon-wrapping">@</span>
+                            </div>
+                            <input type="text" name="name" id="" placeholder="Please enter username" class="form-control"><br/>
                         </div>
-                        <input type="text" name="name" id="" placeholder="Please enter username" class="form-control"><br/>
+                        <label for="post">Post:</label>
+                        <div id="writeArea">
+                            <textarea type="text" maxlength="140" name="post" id="postBox" placeholder="Please enter the post here (Max 140 characters)" class="form-control" rows="10"></textarea><br/>
+                        </div>
+                        <div id="emojiContainer">
+                            <img class="emoji" src="https://img.pngio.com/-download-tears-iphone-emoji-jpg-emoji-png-640_584.png" alt="laughing emoji">
+                            <img class="emoji" src="https://i.pinimg.com/originals/85/65/50/856550aa773911d00b76b24aaa4bc467.png" alt="smiling emoji">
+                            <img class="emoji" src="https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1571606037" alt="sad emoji">
+                        </div>
+                        <div id="gifContainer"></div>
+                        <div class="row justify-content-around">
+                            <input type="button" name="" id="emojiBtn" value="&#128512;" class="btn btn-warning rounded-circle">
+                            <input type="button" id="gifBtn" value="Gif" class="btn btn-primary">
+                            <input type="submit" name="submit" id="submitBtn" value="Post" class="btn btn-success rounded-pill">
+                        </div>
                     </div>
-                    <label for="post">Post:</label>
-                    <div id="writeArea">
-                        <textarea type="text" maxlength="140" name="post" id="postBox" placeholder="Please enter the post here (Max 140 characters)" class="form-control" rows="10"></textarea><br/>
-                    </div>
-                    <div id="emojiContainer">
-                        <img class="emoji" src="https://img.pngio.com/-download-tears-iphone-emoji-jpg-emoji-png-640_584.png" alt="laughing emoji">
-                        <img class="emoji" src="https://i.pinimg.com/originals/85/65/50/856550aa773911d00b76b24aaa4bc467.png" alt="smiling emoji">
-                        <img class="emoji" src="https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1571606037" alt="sad emoji">
-                    </div>
-                    <div id="gifContainer"></div>
-                    <div class="row justify-content-around">
-                        <input type="button" name="" id="emojiBtn" value="&#128512;" class="btn btn-warning rounded-circle">
-                        <input type="button" id="gifBtn" value="Gif" class="btn btn-primary">
-                        <input type="submit" name="submit" id="submitBtn" value="Post" class="btn btn-success rounded-pill">
-                    </div>
-                </div>
-            </form>
+                </form>
+            </section>
+        <section class="mr-0 border border-dark">
+            <div id="viewArea" class="card" style="width: 50%;"></div>
         </section>
-        <section id="viewArea" class="col-12 mr-1 border border-dark"></section>
     </main>
 </body>
 </html>

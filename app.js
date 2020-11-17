@@ -92,14 +92,16 @@ const commentFormArray = [];
 function enterData(data){
     for(post in data){
         const stickyNote = document.createElement('div');
-        stickyNote.setAttribute("class", "stickyNote");
+        stickyNote.setAttribute("class", "stickyNote card-body");
         viewArea.appendChild(stickyNote);
 
         const noteUser = document.createElement('h3');
+        noteUser.setAttribute("class", "card-title");
         noteUser.textContent = data[post].name;
         stickyNote.appendChild(noteUser);
 
         const notePost = document.createElement('p');
+        notePost.setAttribute("class", "card-text");
         notePost.textContent = data[post].post;
         stickyNote.appendChild(notePost);
 
@@ -116,7 +118,9 @@ function enterData(data){
         stickyNote.appendChild(noteGif);
 
         const noteComment = document.createElement('div');
+        noteComment.setAttribute("class", "card-text");
         const commentHead = document.createElement('h4');
+        commentHead.setAttribute("class", "card-title");
         commentHead.textContent = "Comments";
         noteComment.appendChild(commentHead);
 
@@ -144,17 +148,20 @@ function enterData(data){
         commentInput.setAttribute('type', "text");
         commentInput.setAttribute('name', "commentName")
         commentInput.setAttribute('placeHolder', "Enter a name: Enter a comment");
+        commentInput.setAttribute('class', "form-control form-control-sm");
         commentForm.appendChild(commentInput);
 
         const commentEmoji = document.createElement('input');
         commentEmoji.setAttribute('type', "button");
-        commentEmoji.setAttribute('value', "Emoji");
+        commentEmoji.setAttribute('value', "😀");
+        commentEmoji.setAttribute('class', "btn btn-warning btn-sm");
         commentForm.appendChild(commentEmoji); 
 
         const commentBtn = document.createElement('input');
         commentBtn.setAttribute('type', "button");
         commentBtn.setAttribute('name', "button");
         commentBtn.setAttribute('value', "Post Comment");
+        commentBtn.setAttribute('class', "btn btn-success btn-sm");
         const postId = post
         commentBtn.addEventListener("click", ()=> postComment(commentInput.value, postId));
         commentForm.appendChild(commentBtn); 
