@@ -1,9 +1,17 @@
-html{
-    background-image: url(https://www.valtech.com/globalassets/15-uk/02-images/04-insights/post-it-notes-1284667_1920.jpg?w=1320&h=690&mode=crop&format=jpg), linear-gradient();
+html::after {
+    content: "";
+    background: url(https://www.valtech.com/globalassets/15-uk/02-images/04-insights/post-it-notes-1284667_1920.jpg?w=1320&h=690&mode=crop&format=jpg);
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 body{
-   padding-bottom: 7vh; 
+    padding-bottom: 4vh; 
 }
 
 header{
@@ -40,22 +48,22 @@ main{
 }
 
 #viewArea{
+    background-color: palegoldenrod;
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 10px;
-    /* overflow-y: scroll;  */
+    overflow-y: auto; 
 }
 
 .stickyNote{
     background-color: burlywood;
-    width: 15vw;
+    width: 97%;
     margin: 10px;
-    padding: 20px 30px;
 }
 
 .emoji {
-    width: 2vw;
-    height: 4vh;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     margin-bottom: 10px;
 }
@@ -75,7 +83,7 @@ div.form-group {
     background-color: rgb(214, 214, 214);
 }
 .form-control-sm{
-    width: 50%;
+    width: 15em;
 }
 .commentForm{
     display: flex;

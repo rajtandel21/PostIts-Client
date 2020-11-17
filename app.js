@@ -124,37 +124,69 @@ function enterData(data){
         commentHead.textContent = "Comments";
         noteComment.appendChild(commentHead);
 
-        const commentArray = data[post].comments;
-        
-        const commentBody = document.createElement('p');
-        
-        if(commentArray.length > 0){
-            commentArray.forEach(comment =>{
-                const commentName = document.createElement('p');
-                commentName.textContent = `${comment.name}: ${comment.comment}`;
-    
-                noteComment.appendChild(commentName);
-            });
-        } else {
-            commentBody.textContent = "No comments";
-            noteComment.appendChild(commentBody);
-        }
+
         //input for new comment with buttons for emojis
         const commentForm = document.createElement('form');
         commentForm.setAttribute('class', "commentForm");
         noteComment.appendChild(commentForm);
+        
+        //comment text field
+        const commentArea = document.createElement('div');
+        commentForm.appendChild(commentArea);
 
         const commentInput = document.createElement('input');
         commentInput.setAttribute('type', "text");
         commentInput.setAttribute('name', "commentName")
-        commentInput.setAttribute('placeHolder', "Enter a name: Enter a comment");
+        commentInput.setAttribute('placeHolder', "Name: Comment");
         commentInput.setAttribute('class', "form-control form-control-sm");
-        commentForm.appendChild(commentInput);
+        commentArea.appendChild(commentInput);
+        let commentEmojiArray = [];
+        
+
+        //emoji selection div
+        const replyEmoji = document.createElement('div');
+        replyEmoji.setAttribute("class", "replyEmoji");
+        let replyEmojiShow = false;
+        replyEmoji.style.display= "none";
+
+        const imgEmoji = [
+            "https://img.pngio.com/-download-tears-iphone-emoji-jpg-emoji-png-640_584.png", 
+            "https://i.pinimg.com/originals/85/65/50/856550aa773911d00b76b24aaa4bc467.png", 
+            "https://cdn.shopify.com/s/files/1/1061/1924/products/Sad_Face_Emoji_large.png?v=1571606037"
+        ];
+
+        imgEmoji.forEach(img => {
+            const createEmoji = document.createElement('img');
+            createEmoji.setAttribute('class', "emoji");
+            createEmoji.setAttribute('src', `${img}`);
+
+            createEmoji.addEventListener('click', ()=>{
+                const addEmoji = document.createElement('img');
+                addEmoji.setAttribute("class", "emoji");
+                addEmoji.setAttribute('src', `${img}`);
+                commentArea.appendChild(addEmoji);
+                commentEmojiArray.push(img);
+            })
+
+            replyEmoji.appendChild(createEmoji);
+        })
+
+        commentForm.appendChild(replyEmoji);
+        
 
         const commentEmoji = document.createElement('input');
         commentEmoji.setAttribute('type', "button");
         commentEmoji.setAttribute('value', "😀");
         commentEmoji.setAttribute('class', "btn btn-warning btn-sm");
+        commentEmoji.addEventListener("click", ()=>{
+            if(replyEmojiShow){
+                replyEmoji.style.display = "none";
+                replyEmojiShow = false;
+            } else{
+                replyEmoji.style.display = "flex";
+                replyEmojiShow = true;
+            }
+        })
         commentForm.appendChild(commentEmoji); 
 
         const commentBtn = document.createElement('input');
@@ -163,8 +195,34 @@ function enterData(data){
         commentBtn.setAttribute('value', "Post Comment");
         commentBtn.setAttribute('class', "btn btn-success btn-sm");
         const postId = post
-        commentBtn.addEventListener("click", ()=> postComment(commentInput.value, postId));
+        commentBtn.addEventListener("click", ()=> postComment(commentInput.value, postId, commentEmojiArray));
         commentForm.appendChild(commentBtn); 
+
+
+        const commentArray = data[post].comments;
+        
+        const commentBody = document.createElement('p');
+        
+        if(commentArray.length > 0){
+            commentArray.forEach(comment =>{
+                const commentName = document.createElement('p');
+                commentName.textContent = `${comment.name}: ${comment.comment}`;
+                noteComment.appendChild(commentName);
+                
+                if(comment.emoji.length > 0){
+                    (comment.emoji).forEach(emoji=>{
+                        const dataEmoji = document.createElement('img');
+                        dataEmoji.setAttribute('class', 'emoji');
+                        dataEmoji.setAttribute('src', `${emoji}`);
+                        noteComment.appendChild(dataEmoji);
+                    })
+                }
+    
+            });
+        } else {
+            commentBody.textContent = "No comments";
+            noteComment.appendChild(commentBody);
+        }
 
         stickyNote.appendChild(noteComment);
 
@@ -173,7 +231,7 @@ function enterData(data){
 
 
 //console.log(commentFormArray);
-async function postComment(comment, postId){
+async function postComment(comment, postId, emojis){
     const splitComment = comment.split(': ');
     let commentName;
     let commentText;
@@ -190,7 +248,8 @@ async function postComment(comment, postId){
         headers: {"content-type": "application/json"},
         body: JSON.stringify({
             name: commentName,
-            comment: commentText
+            comment: commentText,
+            emoji: emojis
         })
     }
 
