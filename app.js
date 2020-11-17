@@ -19,6 +19,7 @@ function selectedGif(url){
         writeArea.appendChild(img);
     }
     wantedGif = url;
+    gifContainer.style.display = "none";
 }
 
 async function openGifMenu(){
@@ -102,7 +103,7 @@ function enterData(data){
         const commentInput = document.createElement('input');
         commentInput.setAttribute('type', "text");
         commentInput.setAttribute('name', "commentName")
-        commentInput.setAttribute('placeHolder', "Enter a comment");
+        commentInput.setAttribute('placeHolder', "Enter a name: Enter a comment");
         commentForm.appendChild(commentInput);
 
         const commentEmoji = document.createElement('input');
@@ -114,7 +115,8 @@ function enterData(data){
         commentBtn.setAttribute('type', "button");
         commentBtn.setAttribute('name', "button");
         commentBtn.setAttribute('value', "Post Comment");
-        commentBtn.addEventListener("click", ()=> postComment(commentInput.value));
+        const postId = post
+        commentBtn.addEventListener("click", ()=> postComment(commentInput.value, postId));
         commentForm.appendChild(commentBtn); 
 
         stickyNote.appendChild(noteComment);
@@ -124,16 +126,31 @@ function enterData(data){
 
 
 //console.log(commentFormArray);
-async function postComment(comment){
-    console.log(comment);
+async function postComment(comment, postId){
+    const splitComment = comment.split(': ');
+    let commentName;
+    let commentText;
+    if(splitComment.length === 1){
+        commentName = 'Anonymous';
+        commentText = splitComment[0];
+    }else{
+        commentName = splitComment[0];
+        commentText = splitComment[1];
+    }
+    console.log(splitComment, postId);
     const option = {
         method: 'POST',
         headers: {"content-type": "application/json"},
         body: JSON.stringify({
             name: commentName,
-            comment: commentComment
+            comment: commentText
         })
     }
+
+    const url = await fetch(`http://localhost:3000/posts/${postId}`, option);
+    const res = await url.json();
+    
+    location.reload();
 }
 
 
@@ -167,7 +184,6 @@ async function postData(e){
     try{
         const postRequest = await fetch('http://localhost:3000/posts', option);
         const postReply = await postRequest.json();
-        console.log(postReply)
     }catch(err){
         console.log(err);
     };
