@@ -33,7 +33,7 @@ function selectedGif(url){
 
 function selectedEmoji(url){
     const emojiImg = document.createElement('img');
-    emojiImg.setAttribute('class', "selectedEmoji");
+    emojiImg.setAttribute('class', "emoji");
     emojiImg.setAttribute("src", `${url}`);
     writeArea.appendChild(emojiImg);
     wanterEmoji.push(url);
@@ -92,6 +92,7 @@ const commentFormArray = [];
 function enterData(data){
     for(post in data){
         const stickyNote = document.createElement('div');
+        stickyNote.setAttribute("class", "stickyNote");
         viewArea.appendChild(stickyNote);
 
         const noteUser = document.createElement('h3');
@@ -105,7 +106,7 @@ function enterData(data){
         const emojiArray = data[post].emoji;
         emojiArray.forEach(emoji => {
             const noteEmoji = document.createElement('img');
-            noteEmoji.setAttribute("class", "selectedEmoji");
+            noteEmoji.setAttribute("class", "emoji");
             noteEmoji.setAttribute('src', emoji);
             stickyNote.appendChild(noteEmoji);
         })
