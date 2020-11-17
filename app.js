@@ -80,16 +80,15 @@ function enterData(data){
         noteComment.appendChild(commentHead);
 
         const commentArray = data[post].comments;
-        const commentName = document.createElement('p');
+        
         const commentBody = document.createElement('p');
         
         if(commentArray.length > 0){
             commentArray.forEach(comment =>{
-                commentName.textContent = comment.name;
-                commentBody.textContent = comment.comment;
+                const commentName = document.createElement('p');
+                commentName.textContent = `${comment.name}: ${comment.comment}`;
     
                 noteComment.appendChild(commentName);
-                noteComment.appendChild(commentBody);
             });
         } else {
             commentBody.textContent = "No comments";
@@ -125,8 +124,16 @@ function enterData(data){
 
 
 //console.log(commentFormArray);
-async function postComment(e){
-    console.log(e);
+async function postComment(comment){
+    console.log(comment);
+    const option = {
+        method: 'POST',
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify({
+            name: commentName,
+            comment: commentComment
+        })
+    }
 }
 
 
@@ -164,7 +171,7 @@ async function postData(e){
     }catch(err){
         console.log(err);
     };
-
+    location.reload();
 }
 
 submitForm.addEventListener('submit', postData);
