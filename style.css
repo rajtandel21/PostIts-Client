@@ -11,6 +11,8 @@ html::after {
     right: 0;
     position: absolute;
     z-index: -1;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 header{
@@ -170,6 +172,29 @@ div.form-group {
 
 .card-text > p{
     background: whitesmoke;
-    width: 23em;
+    width: 24vw;
     margin-bottom: 1px;
+}
+
+@media (max-width: 600px){
+   main{
+       display: flex;
+       flex-direction: column;
+    }
+    .w-70{
+        width: 92vw;
+    }
+    .viewArea{
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    .stickyNote{
+        width: 60vw;
+    }
+    .form-control-sm{
+        width: 11.3em;
+    }
+    img{
+        height: auto;
+        width: 35vw;
 }
