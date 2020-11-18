@@ -15,6 +15,7 @@ let gifContainerOpen = false;
 let emojiContainerOpen = false;
 let wantedGif = "";
 let wanterEmoji = [];
+const commentFormArray = [];
 
 const img = document.createElement('img');
 
@@ -46,6 +47,7 @@ function selectedEmoji(url){
 emoji.forEach(em => {
     em.addEventListener('click', ()=> selectedEmoji(em.src));
 })
+
 function openEmojiMenu(){
     if(emojiContainerOpen){
         emojiContainer.style.display = "none";
@@ -87,7 +89,6 @@ async function openGifMenu(){
 emojiBtn.addEventListener('click', openEmojiMenu);
 gifBtn.addEventListener('click', openGifMenu)
 
-const commentFormArray = [];
 
 function enterData(data){
     for(post in data){
@@ -252,8 +253,6 @@ async function postComment(comment, postId, emojis){
     location.reload();
 }
 
-
-
 function getPosts(){
     fetch('http://localhost:3000/posts')
         .then(res => res.json())
@@ -262,13 +261,21 @@ function getPosts(){
 
 async function postData(e){
     e.preventDefault();
-    const name = e.target.name.value;
-    const post = e.target.post.value;
+    let name = e.target.name.value;
+    let post = e.target.post.value;
     const gif = wantedGif;
     const emoji = wanterEmoji;
 
-    console.log(name, post);
-
+    if(name === ""){
+        name = "Anonymous";
+        e.target.name.value = "Anonymous";
+    }
+    console.log(name);
+    if(post === ""){
+        console.log(e.target.post);
+        return e.target.post.placeholder = "Cannot post without comment";
+    }
+    
     const option = {
         method: 'POST',
         headers: {"content-type": "application/json"},
@@ -279,13 +286,16 @@ async function postData(e){
             emoji: emoji
         })
     };
-
+    
     try{
         const postRequest = await fetch('http://localhost:3000/posts', option);
         const postReply = await postRequest.json();
     }catch(err){
         console.log(err);
     };
+    
+    e.target.name.value = "";
+    e.target.post.value = "";
     location.reload();
 }
 
