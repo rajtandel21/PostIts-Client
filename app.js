@@ -92,7 +92,7 @@ const commentFormArray = [];
 function enterData(data){
     for(post in data){
         const stickyNote = document.createElement('div');
-        stickyNote.setAttribute("class", "stickyNote card-body");
+        stickyNote.setAttribute("class", "stickyNote container");
         viewArea.appendChild(stickyNote);
 
         const noteUser = document.createElement('h3');

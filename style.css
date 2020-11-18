@@ -10,10 +10,6 @@ html::after {
     z-index: -1;
 }
 
-body{
-    padding-bottom: 4vh; 
-}
-
 header{
     background: rgb(159,94,44);
     background: linear-gradient(90deg, rgba(159,94,44,0.9867297260701156) 0%, rgba(121,89,9,1) 48%, rgba(255,192,0,1) 100%);
@@ -22,7 +18,7 @@ header{
 main{
     display: grid;
     grid-template-columns: 20vw 65vw;
-    grid-gap: 2.5vw;    
+    grid-gap: 5vw;    
 }
 
 #emojiContainer{
@@ -52,13 +48,14 @@ main{
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 10px;
-    overflow-y: auto; 
+    overflow-y: scroll; 
 }
 
 .stickyNote{
     background-color: burlywood;
-    width: 97%;
+    max-width: 97%;
     margin: 10px;
+    padding-top: 10px;
 }
 
 .emoji {
@@ -88,4 +85,12 @@ div.form-group {
 .commentForm{
     display: flex;
     flex-wrap: wrap;
+}
+
+.h-80{
+    height: 80vh;
+}
+
+.w-70{
+    width: 70vw;
 }
