@@ -1,11 +1,24 @@
+html::after {
+    content: "";
+    background: url(https://www.valtech.com/globalassets/15-uk/02-images/04-insights/post-it-notes-1284667_1920.jpg?w=1320&h=690&mode=crop&format=jpg);
+    opacity: 0.7;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}
+
 header{
     background: rgb(159,94,44);
     background: linear-gradient(90deg, rgba(159,94,44,0.9867297260701156) 0%, rgba(121,89,9,1) 48%, rgba(255,192,0,1) 100%);
 }
 
 main{
-    display: flex;
-    
+    display: grid;
+    grid-template-columns: 20vw 65vw;
+    grid-gap: 5vw;    
 }
 
 #emojiContainer{
@@ -31,22 +44,23 @@ main{
 }
 
 #viewArea{
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: scroll;
-    width: 70vw;
+    background-color: palegoldenrod;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    overflow-y: scroll; 
 }
 
 .stickyNote{
     background-color: burlywood;
-    width: 15vw;
+    max-width: 97%;
     margin: 10px;
-    padding: 20px 30px;
+    padding-top: 10px;
 }
 
 .emoji {
-    width: 2vw;
-    height: 4vh;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
     margin-bottom: 10px;
 }
@@ -64,4 +78,19 @@ textarea {
 
 div.form-group {
     background-color: rgb(214, 214, 214);
+}
+.form-control-sm{
+    width: 15em;
+}
+.commentForm{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.h-80{
+    height: 80vh;
+}
+
+.w-70{
+    width: 70vw;
 }
