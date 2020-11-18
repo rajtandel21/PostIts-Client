@@ -120,7 +120,7 @@ function enterData(data){
 
         const noteComment = document.createElement('div');
         noteComment.setAttribute("class", "card-text");
-        const commentHead = document.createElement('h4');
+        const commentHead = document.createElement('h5');
         commentHead.setAttribute("class", "card-title");
         commentHead.textContent = "Comments";
         noteComment.appendChild(commentHead);

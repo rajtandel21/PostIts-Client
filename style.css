@@ -182,19 +182,22 @@ div.form-group {
        flex-direction: column;
     }
     .w-70{
-        width: 92vw;
+        width: 93vw;
     }
-    .viewArea{
+    #viewArea{
         display: flex;
-        flex-wrap: nowrap;
+        flex-wrap: nowrap;        
     }
     .stickyNote{
-        width: 60vw;
+        width: 85vw;
     }
     .form-control-sm{
-        width: 11.3em;
+        width: 17em;
+    }
+    .card-text > p{
+        width: 64vw;
     }
     img{
         height: auto;
-        width: 35vw;
+        width: 40vw;
 }
