@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ultra&display=swap');
+
 html::after {
     content: "";
     background: url(https://www.valtech.com/globalassets/15-uk/02-images/04-insights/post-it-notes-1284667_1920.jpg?w=1320&h=690&mode=crop&format=jpg);
-    opacity: 0.7;
+    opacity: 0.75;
     top: 0;
     left: 0;
     bottom: 0;
@@ -12,7 +15,18 @@ html::after {
 
 header{
     background: rgb(159,94,44);
-    background: linear-gradient(90deg, rgba(159,94,44,0.9867297260701156) 0%, rgba(121,89,9,1) 48%, rgba(255,192,0,1) 100%);
+    background: linear-gradient(90deg, rgba(143, 69, 13, 0.987) 0%, rgba(255,192,0,1) 100%);
+}
+
+h1{
+	color: #343434;
+	font-weight: bold;
+	font-family: 'Ultra', sans-serif;   
+	font-size: 48px;
+    line-height: 62px;
+    letter-spacing: 1px;
+	text-transform: uppercase;
+	text-shadow: 0 2px white, 0 3px #777;
 }
 
 main{
@@ -43,20 +57,78 @@ main{
     overflow-y: scroll;
 }
 
+#postArea{
+    border-radius: 25px;
+    border: 15px solid transparent;
+    border-image: url(clipboard.png) 50 round;  
+    margin-bottom: auto;
+}
+
 #viewArea{
-    background-color: palegoldenrod;
+    border: 15px solid transparent;
+    border-image: url(border.jpg) 35 round;
+    background-image: url(https://previews.123rf.com/images/norgal/norgal1206/norgal120600075/14241989-cork-background.jpg);
     display: grid;
     grid-template-columns: auto auto;
     grid-gap: 10px;
     overflow-y: scroll; 
 }
 
+#viewArea::-webkit-scrollbar {
+    display: none;
+}
+
 .stickyNote{
     background-color: burlywood;
-    max-width: 97%;
-    margin: 10px;
+    max-width: 85%;    
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding-top: 10px;
+    font-size:1em;
+    font-weight:normal;
+    font-family: 'Poppins', cursive;
+    text-decoration:none;
+    color:#000;
+    background:#5bc4f5;
+    display:block;
+    padding:1em;
+    -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+    -webkit-transition:-webkit-transform .15s linear;
 }
+
+.stickyNote:nth-child(even){
+    -webkit-transform:rotate(2deg);
+    position:relative;
+    top:5px;
+    background-color:#ff6161;
+}
+
+.stickyNote:nth-child(3n){
+    -webkit-transform:rotate(-1.5deg);
+    position:relative;
+    top:5px;
+    background-color: #FFFF66;
+}
+
+.stickyNote:nth-child(5n){
+    -webkit-transform:rotate(3.5deg);
+    position:relative;
+    top:5px;
+    background-color: #FFFF99;
+}
+
+.stickyNote:hover, .stickyNote:focus{
+    -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+    -webkit-transform: scale(1.05);
+    position:relative;
+    z-index:1;
+}
+
+h3, h4{
+    font-size:140%;
+    font-weight:bold;
+    padding-bottom:10px;
+  }
 
 .emoji {
     width: 20px;
@@ -85,6 +157,7 @@ div.form-group {
 .commentForm{
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 .h-80{
@@ -93,4 +166,10 @@ div.form-group {
 
 .w-70{
     width: 70vw;
+}
+
+.card-text > p{
+    background: whitesmoke;
+    width: 23em;
+    margin-bottom: 1px;
 }
