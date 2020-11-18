@@ -17,6 +17,8 @@ A website where anonymous users can post and comment on other people's posts.
 * HTML
 * CSS
 * JavaScript
+* Netlify
+* Heroku
 
 
 ## Process
