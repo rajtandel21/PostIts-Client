@@ -26,11 +26,11 @@ The project started with the analysis of the website requirements based on which
 
 After the planning and designing step, we worked on the initial HTML, Javascript and Server-side JavaScript by mob programming. This step ensured we had a basic functioning website before we split tasks and worked on specific features individually.
 
-Everytime a new functioning feature was completed, its branch was merged to the Development branch and pushed to the main git repository. At the end all final changes were merged with the amster branch.
+Everytime a new functioning feature was completed, its branch was merged to the Development branch and pushed to the main git repository. At the end all final changes were merged with the master branch.
 
 ## Code Snippets
 
-Method of adding a background image with a set opacity. Source: [CSS Tricks](https://css-tricks.com/)
+Method of adding a background image with a set opacity. Source: [CSS Tricks](https://css-tricks.com/snippets/css/transparent-background-images/)
 
 ```CSS
 html::after {
@@ -70,4 +70,4 @@ Recorded a gif highlighting the website functionality and inserted it into the R
 * Adapting the CSS for all different browsers.
 * Making the design responsive for tablets.
 * Allowing users to create an account and authenticate on the website.
-* Adding a badge and a license to the repo
+* Adding a badge and a license to the repo.
