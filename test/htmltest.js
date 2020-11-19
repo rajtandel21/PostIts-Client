@@ -15,7 +15,6 @@ beforeEach(async () => {
     } catch {
         done();
     }
-    
 });
 
 describe('index.html', () => {
@@ -39,10 +38,10 @@ describe('index.html', () => {
         it("should have the title", async () => {
             expect(await page.title()).to.equal("PostIt's")
         });
+
 after(async () => {
             await browser.close();
         })
-    
     })
 })
 
