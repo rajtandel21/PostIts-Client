@@ -254,14 +254,14 @@ async function postComment(comment, postId, emojis){
         })
     }
 
-    const url = await fetch(`http://localhost:3000/posts/${postId}`, option);
+    const url = await fetch(`https://postits-site.herokuapp.com/posts/${postId}`, option);
     const res = await url.json();
     
     location.reload();
 }
 
 function getPosts(){
-    fetch('http://localhost:3000/posts')
+    fetch('https://postits-site.herokuapp.com/posts')
         .then(res => res.json())
         .then(data => enterData(data));
 }
@@ -295,7 +295,7 @@ async function postData(e){
     };
     
     try{
-        const postRequest = await fetch('http://localhost:3000/posts', option);
+        const postRequest = await fetch('https://postits-site.herokuapp.com/posts', option);
         const postReply = await postRequest.json();
     }catch(err){
         console.log(err);
