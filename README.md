@@ -1,4 +1,7 @@
 # PostIt's - Client Repository
+
+[![License: MIT](https://img.shields.io/badge/Licence-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 ![PostIts-min](https://user-images.githubusercontent.com/73439151/99552244-af7d2b00-29b4-11eb-962d-9877b1f5e6ae.gif)
 
 PostIt's is a website where anonymous users can post and comment on other people's posts.
@@ -8,6 +11,13 @@ PostIt's is a website where anonymous users can post and comment on other people
 * Clone and download this repo.
 
 * Clone and download the PostIt's server repo.
+
+## Usage 
+
+* Go to the following link:
+
+* Through the User Interface write posts in the small left container (top for smartphones and tablets) or write comments on other posts in the large right container (bottom for smartphones and tablets).
+
 
 ## Technologies
 
@@ -71,3 +81,7 @@ Recorded a gif highlighting the website functionality and inserted it into the R
 * Making the design responsive for tablets.
 * Allowing users to create an account and authenticate on the website.
 * Adding a badge and a license to the repo.
+
+## Licence
+
+* [MIT Licence](https://opensource.org/licenses/mit-license.php)
