@@ -139,7 +139,7 @@ function enterData(data){
         commentInput.setAttribute('type', "text");
         commentInput.setAttribute('name', "commentName")
         commentInput.setAttribute('placeHolder', "Name: Comment");
-        commentInput.setAttribute('class', "form-control form-control-sm");
+        commentInput.setAttribute('class', `comment-${post} form-control form-control-sm`);
         commentArea.appendChild(commentInput);
         let commentEmojiArray = [];
         
@@ -237,8 +237,8 @@ async function postComment(comment, postId, emojis){
     let commentName;
     let commentText;
     if(splitComment.length === 1){
-        commentName = 'Anonymous';
-        commentText = splitComment[0];
+        const invalidComment = document.getElementsByClassName(`comment-${postId}`)[0];
+        return invalidComment.placeholder = 'Please enter a name: comment';
     }else{
         commentName = splitComment[0];
         commentText = splitComment[1];

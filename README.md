@@ -67,6 +67,10 @@ Succesfully posted gif and emoji data on the page and saved it on our server. | 
 Entered and stored new data into an external json file. | Creating the function that allowed us to post comments on the page and store them in a separate .json file.
 Recorded a gif highlighting the website functionality and inserted it into the README file. | Hiding a responsive API key using a dotenv file.
 
+## Bugs
+
+* When trying to comment with an emoji to a post, the comment and emoji button expand disproportionately to the text area, but go back to their normal size after posting the comment.
+
 ## Features
 
 * Ability to post text, gifs and emojis in a designated area.
