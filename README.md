@@ -12,6 +12,8 @@ PostIt's is a website where anonymous users can post and comment on other people
 
 * Clone and download the PostIt's server repo.
 
+* Get Api key from GIPHY and enter it into the variable apiKey in app.js
+
 ## Usage 
 
 * Go to the following link:
