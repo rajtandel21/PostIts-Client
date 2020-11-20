@@ -236,12 +236,12 @@ async function postComment(comment, postId, emojis){
     const splitComment = comment.split(': ');
     let commentName;
     let commentText;
+    const invalidComment = document.getElementsByClassName(`comment-${postId}`)[0];
     if(splitComment.length === 1){
-        const invalidComment = document.getElementsByClassName(`comment-${postId}`)[0];
         return invalidComment.placeholder = 'Please enter a name: comment';
-    }else{
-        commentName = splitComment[0];
-        commentText = splitComment[1];
+    } else {
+        commentName = (splitComment[0] === "") ? 'Anonymous' : splitComment[0]
+        commentText = splitComment[1];       
     }
     console.log(splitComment, postId);
     const option = {
