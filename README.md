@@ -6,6 +6,9 @@
 
 PostIt's is a website where anonymous users can post and comment on other people's posts.
 
+To visit the site click this [link](https://postits.netlify.app/).
+Here is the url for our API `https://postits-site.herokuapp.com/posts`.
+
 ## Installation
 
 * Clone and download this repo.
